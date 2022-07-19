@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<SplitPane fx:id="Panel" dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+           minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0"
+           xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <items>
+        <TextField fx:id="input" prefHeight="0.0" prefWidth="598.0" style="-fx-font-size: 30;"/>
+        <ListView fx:id="listView" prefHeight="373.0" prefWidth="598.0" style="-fx-font-size: 30;"/>
+    </items>
+</SplitPane>

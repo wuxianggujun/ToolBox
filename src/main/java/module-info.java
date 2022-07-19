@@ -5,4 +5,6 @@ module com.wuxianggujun.toolbox {
 
     opens com.wuxianggujun.toolbox to javafx.fxml;
     exports com.wuxianggujun.toolbox;
+    exports com.wuxianggujun.toolbox.cache;
+    opens com.wuxianggujun.toolbox.cache to javafx.fxml;
 }
