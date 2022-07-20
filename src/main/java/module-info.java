@@ -27,11 +27,9 @@ module com.wuxianggujun.toolbox {
     requires io.netty.transport.rxtx;
     requires io.netty.transport.sctp;
     requires io.netty.transport.udt;
-    
-    requires org.lwjgl;
-    requires org.lwjgl.glfw;
-    requires org.lwjgl.opengl;
-    requires org.lwjgl.opengles;
+
+
+    requires org.slf4j;
 
     opens com.wuxianggujun.toolbox to javafx.fxml;
     exports com.wuxianggujun.toolbox;
