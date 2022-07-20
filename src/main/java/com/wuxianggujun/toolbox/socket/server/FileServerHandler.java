@@ -40,7 +40,7 @@ public class FileServerHandler extends SimpleChannelInboundHandler<Object> {
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Object o) throws Exception {
         Channel channel = channelHandlerContext.channel();
-        System.out.println("MESSAGE FROM SERVER - " + channel.remoteAddress() + " - " + o);
+        logger.info("我是传输的数据%s".formatted(String.valueOf(o)));
 
     }
 

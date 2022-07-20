@@ -28,15 +28,16 @@ public class FileServer {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
-                    .option(ChannelOption.SO_BACKLOG, 100)
-                    .option(ChannelOption.SO_KEEPALIVE, true)
-                    .option(ChannelOption.ALLOW_HALF_CLOSURE, true)
-                    .option(ChannelOption.TCP_NODELAY, true).localAddress(bindHost, bindPort)
+                    .option(ChannelOption.SO_BACKLOG, 1024)//服务器接收连接的队列长度，如果队列已满，客户端连接将被拒绝.
+                    .childOption(ChannelOption.SO_KEEPALIVE, true)
+                    .childOption(ChannelOption.ALLOW_HALF_CLOSURE, true)
+                    .childOption(ChannelOption.TCP_NODELAY, true)
+                    .localAddress(bindHost, bindPort)//设置监听端口
                     .handler(new LoggingHandler(LogLevel.INFO))
                     .childHandler(new FileServerInitializer());
 
             //Start the server
-            ChannelFuture f = b.bind(bindPort).sync();
+            ChannelFuture f = b.bind().sync();
             logger.info("文件服务器启动成功！");
 
             f.channel().closeFuture().sync();
