@@ -24,6 +24,7 @@ public class FileClient {
             bootstrap.group(workerGroup)
                     .channel(NioSocketChannel.class)
                     .option(ChannelOption.AUTO_READ, true)
+                    .option(ChannelOption.TCP_NODELAY,true)
                     .option(ChannelOption.SO_KEEPALIVE, true)
                     .handler(new FileClientInitializer());
 

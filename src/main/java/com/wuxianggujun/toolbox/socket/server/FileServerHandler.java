@@ -1,10 +1,9 @@
 package com.wuxianggujun.toolbox.socket.server;
 
-import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.util.ReferenceCountUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,10 +43,9 @@ public class FileServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        cause.printStackTrace();
-        if (ctx.channel().isActive()) {
-            ctx.writeAndFlush("Error: " + cause.getClass().getSimpleName() + ": " + cause.getMessage() + "\n").addListener(ChannelFutureListener.CLOSE);
-        }
-        ReferenceCountUtil.release(ctx);
+        super.exceptionCaught(ctx, cause);
+        logger.error(cause.getMessage());
+        Channel channel = ctx.channel();
+        if (channel.isActive()) ctx.close();
     }
 }
