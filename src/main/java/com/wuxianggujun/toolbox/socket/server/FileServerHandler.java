@@ -1,15 +1,14 @@
 package com.wuxianggujun.toolbox.socket.server;
 
-import io.netty.channel.Channel;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.util.ReferenceCountUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class FileServerHandler extends SimpleChannelInboundHandler<Object> {
+public class FileServerHandler extends ChannelInboundHandlerAdapter {
 
     private static final Logger logger = LoggerFactory.getLogger(FileServerHandler.class);
 
@@ -37,11 +36,10 @@ public class FileServerHandler extends SimpleChannelInboundHandler<Object> {
         logger.info("客户端断开链接" + ctx.channel().localAddress().toString() + ";channelId:" + ctx.channel().hashCode());
     }
 
-    @Override
-    protected void channelRead0(ChannelHandlerContext channelHandlerContext, Object o) throws Exception {
-        Channel channel = channelHandlerContext.channel();
-        logger.info("我是传输的数据%s".formatted(String.valueOf(o)));
 
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        logger.info("接受的数据：" + msg);
     }
 
     @Override
