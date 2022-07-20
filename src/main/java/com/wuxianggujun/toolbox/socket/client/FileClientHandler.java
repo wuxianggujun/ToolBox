@@ -23,7 +23,6 @@ public class FileClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        super.exceptionCaught(ctx, cause);
         Channel channel = ctx.channel();
         if (channel.isActive()) ctx.close();
     }
