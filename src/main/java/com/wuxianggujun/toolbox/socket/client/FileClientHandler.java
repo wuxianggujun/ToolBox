@@ -1,11 +1,11 @@
 package com.wuxianggujun.toolbox.socket.client;
 
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 
-public class FileClientHandler extends SimpleChannelInboundHandler<Object> {
+public class FileClientHandler extends ChannelInboundHandlerAdapter {
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
-        ctx.writeAndFlush("怎么回事啊！".getBytes());
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        ctx.writeAndFlush("hello:");
     }
 }
