@@ -42,10 +42,8 @@ public class FileServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         if (msg instanceof FileData){
-            File file = new File("C:\\Users\\MI\\IdeaProjects\\ToolBox\\LOG\\test");
-            
+            logger.info("接受的数据：" + msg);
         }
-        logger.info("接受的数据：" + msg);
     }
 
     @Override
