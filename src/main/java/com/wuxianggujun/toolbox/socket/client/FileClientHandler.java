@@ -13,25 +13,6 @@ public class FileClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-
-//        ChannelFuture channelFuture = ctx.writeAndFlush(FileUtils.readFile("C:\\Users\\MI\\IdeaProjects\\ToolBox\\LOG\\app_error.log"), ctx.newProgressivePromise());
-//        channelFuture.addListener(new ChannelProgressiveFutureListener() {
-//            //文件传输进度监听器
-//            @Override
-//            public void operationProgressed(ChannelProgressiveFuture future, long progress, long total) throws Exception {
-//                if (total < 0) {
-//                    System.out.println("file {} transfer progress: {}");
-//                } else {
-//                    System.out.println("file {} transfer progress: {}/{}");
-//                }
-//            }
-//
-//            //文件传输完成执行监听器
-//            @Override
-//            public void operationComplete(ChannelProgressiveFuture future) throws Exception {
-//                System.out.println("file {} transfer complete.");
-//            }
-//        });
         ctx.writeAndFlush(FileUtils.readFile("C:\\Users\\MI\\IdeaProjects\\ToolBox\\LOG\\app_error.log"));
     }
 

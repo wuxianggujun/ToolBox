@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.RandomAccessFile;
 
 public class FileServerHandler extends ChannelInboundHandlerAdapter {
 
@@ -42,6 +43,13 @@ public class FileServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         if (msg instanceof FileData){
+            FileData data = (FileData) msg;
+            File file = new File("C:\\Users\\MI\\IdeaProjects\\ToolBox\\LOG\\test"+data.getName());
+            try (RandomAccessFile randomAccessFile = new RandomAccessFile(file, "rw")) {
+                randomAccessFile.write(data.getData());
+                ctx.writeAndFlush(data);
+            }
+            ctx.close();
             logger.info("接受的数据：" + msg);
         }
     }

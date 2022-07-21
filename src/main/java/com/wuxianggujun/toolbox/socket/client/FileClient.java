@@ -1,6 +1,5 @@
 package com.wuxianggujun.toolbox.socket.client;
 
-import com.wuxianggujun.toolbox.socket.util.FileUtils;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
@@ -35,16 +34,13 @@ public class FileClient {
             } else {
                 LOG.info("客户端连接失败！");
             }
-         
-//            channelFuture.channel().closeFuture().addListener(future -> {
-//                LOG.info("我现在是CloseFuture：" + future);
-//            });
+
+            channelFuture.channel().closeFuture().addListener(future -> {
+                LOG.info("我现在是CloseFuture：" + future);
+            });
             
             //程序会一直运行，直到channel关闭
             channelFuture.channel().closeFuture().sync();
-           
-           
-
 
         } catch (Exception e) {
             e.printStackTrace();
