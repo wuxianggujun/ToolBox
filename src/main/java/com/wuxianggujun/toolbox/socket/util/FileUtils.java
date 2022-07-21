@@ -13,8 +13,7 @@ public class FileUtils {
         //随机读取文件
         try (RandomAccessFile randomAccessFile = new RandomAccessFile(file, "r")) {
             long fileLength = randomAccessFile.length();
-            randomAccessFile.seek(fileLength);
-            byte[] bytes = new byte[1024];
+            byte[] bytes = new byte[(int) fileLength];
             int readSize = randomAccessFile.read(bytes);
             if (readSize <= 0) {
                 randomAccessFile.close();
