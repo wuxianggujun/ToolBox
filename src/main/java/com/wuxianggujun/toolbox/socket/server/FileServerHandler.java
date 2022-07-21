@@ -42,6 +42,8 @@ public class FileServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+
+       
         if (msg instanceof FileData){
             FileData data = (FileData) msg;
             File file = new File("C:\\Users\\MI\\IdeaProjects\\ToolBox\\LOG\\test\\"+data.getName());
