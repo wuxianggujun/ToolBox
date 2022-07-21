@@ -1,11 +1,14 @@
 package com.wuxianggujun.toolbox.socket.server;
 
+import com.wuxianggujun.toolbox.socket.po.FileData;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.socket.SocketChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.File;
 
 public class FileServerHandler extends ChannelInboundHandlerAdapter {
 
@@ -38,12 +41,16 @@ public class FileServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        if (msg instanceof FileData){
+            File file = new File("C:\\Users\\MI\\IdeaProjects\\ToolBox\\LOG\\test");
+            
+        }
         logger.info("接受的数据：" + msg);
     }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        super.exceptionCaught(ctx, cause);
+        cause.printStackTrace();
         logger.error(cause.getMessage());
         Channel channel = ctx.channel();
         if (channel.isActive()) ctx.close();
