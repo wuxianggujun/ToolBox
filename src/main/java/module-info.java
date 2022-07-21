@@ -21,8 +21,6 @@ module com.wuxianggujun.toolbox {
     requires org.slf4j;
     requires com.jfoenix;
     opens com.wuxianggujun.toolbox to javafx.fxml;
-    exports com.wuxianggujun.toolbox;
-    exports com.wuxianggujun.toolbox.net;
     exports com.wuxianggujun.toolbox.cache;
     exports com.wuxianggujun.toolbox.core;
     opens com.wuxianggujun.toolbox.cache to javafx.fxml;
