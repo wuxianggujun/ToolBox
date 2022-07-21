@@ -21,12 +21,13 @@ public class SendFile extends Application {
         FlowPane main = new FlowPane();
         main.setVgap(20);
         main.setHgap(20);
-        
+
         JFXButton jfoenixButton = new JFXButton("JFoenix Button");
         main.getChildren().add(jfoenixButton);
 
         JFXButton button = new JFXButton("RAISED BUTTON");
         button.getStyleClass().add("button-raised");
+        button.setOnAction(actionEvent -> System.out.println("无情"));
         main.getChildren().add(button);
 
         JFXButton button1 = new JFXButton("DISABLED");
