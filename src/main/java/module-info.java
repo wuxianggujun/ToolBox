@@ -19,6 +19,7 @@ module com.wuxianggujun.toolbox {
     requires io.netty.transport.udt;
     
     requires org.slf4j;
+    requires com.jfoenix;
     opens com.wuxianggujun.toolbox to javafx.fxml;
     exports com.wuxianggujun.toolbox;
     exports com.wuxianggujun.toolbox.net;

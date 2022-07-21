@@ -1,15 +1,13 @@
 package com.wuxianggujun.toolbox.core;
 
-import com.wuxianggujun.toolbox.HelloApplication;
+import com.jfoenix.controls.JFXButton;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
-import javafx.stage.FileChooser;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 
 public class SendFile extends Application {
@@ -19,22 +17,33 @@ public class SendFile extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        primaryStage.setTitle("局域网文件共享");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-//        primaryStage.setTitle("发送端");
-//        FileChooser fileChooser = new FileChooser();
-//        Button button = new Button("选择文件");
-//        button.setOnAction(e->{
-//            File selectedFile = fileChooser.showOpenDialog(primaryStage);
-//        });
-//        VBox vBox = new VBox(button);
-//        Scene scene = new Scene(vBox,960,600);
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
+    public void start(Stage stage) throws IOException {
+        FlowPane main = new FlowPane();
+        main.setVgap(20);
+        main.setHgap(20);
         
+        JFXButton jfoenixButton = new JFXButton("JFoenix Button");
+        main.getChildren().add(jfoenixButton);
+
+        JFXButton button = new JFXButton("RAISED BUTTON");
+        button.getStyleClass().add("button-raised");
+        main.getChildren().add(button);
+
+        JFXButton button1 = new JFXButton("DISABLED");
+        button1.setDisable(true);
+        main.getChildren().add(button1);
+
+        StackPane pane = new StackPane();
+        pane.getChildren().add(main);
+        StackPane.setMargin(main, new Insets(100));
+        pane.setStyle("-fx-background-color:WHITE");
+
+
+        final Scene scene = new Scene(pane, 960, 600);
+        scene.getStylesheets().add(SendFile.class.getResource("/css/jfoenix-components.css").toExternalForm());
+        stage.setTitle("JFX Button Demo");
+        stage.setScene(scene);
+        stage.show();
+
     }
 }
